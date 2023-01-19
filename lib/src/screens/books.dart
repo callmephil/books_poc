@@ -56,6 +56,7 @@ class _BooksScreenState extends State<BooksScreen>
 
   @override
   Widget build(BuildContext context) {
+    print('should be rendering books');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Books'),

@@ -32,7 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  adaptive_navigation:
+  flutter_adaptive_scaffold:
   adaptive_dialog:
   collection:
   go_router:
