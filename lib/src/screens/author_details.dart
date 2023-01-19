@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:go_router_books/src/data.dart';
+import 'package:go_router_books/src/data/data.dart';
 import 'package:go_router_books/src/widgets/book_list.dart';
 
 /// The author detail screen.

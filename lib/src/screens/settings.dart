@@ -18,24 +18,26 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: SafeArea(
-          child: SingleChildScrollView(
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 400),
-                child: const Card(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 18, horizontal: 12),
-                    child: SettingsContent(),
-                  ),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 400),
+              child: const Card(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 18, horizontal: 12),
+                  child: SettingsContent(),
                 ),
               ),
             ),
           ),
         ),
-      );
+      ),
+    );
+  }
 }
 
 /// The content of a [SettingsScreen].
@@ -46,56 +48,58 @@ class SettingsContent extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Column(
-        children: [
-          ...<Widget>[
-            Text(
-              'Settings',
-              style: Theme.of(context).textTheme.headlineMedium,
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ...<Widget>[
+          Text(
+            'Settings',
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              BookstoreAuthScope.of(context).signOut();
+            },
+            child: const Text('Sign out'),
+          ),
+          Link(
+            uri: Uri.parse('/book/0'),
+            builder: (BuildContext context, FollowLink? followLink) =>
+                TextButton(
+              onPressed: followLink,
+              child: const Text('Go directly to /book/0 (Link)'),
             ),
-            ElevatedButton(
-              onPressed: () {
-                BookstoreAuthScope.of(context).signOut();
-              },
-              child: const Text('Sign out'),
-            ),
-            Link(
-              uri: Uri.parse('/book/0'),
-              builder: (BuildContext context, FollowLink? followLink) =>
-                  TextButton(
-                onPressed: followLink,
-                child: const Text('Go directly to /book/0 (Link)'),
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                context.go('/book/0');
-              },
-              child: const Text('Go directly to /book/0 (GoRouter)'),
-            ),
-          ].map<Widget>(
-            (Widget w) => Padding(padding: const EdgeInsets.all(8), child: w),
           ),
           TextButton(
-            onPressed: () => showDialog<String>(
-              context: context,
-              builder: (BuildContext context) => AlertDialog(
-                title: const Text('Alert!'),
-                content: const Text('The alert description goes here.'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(context, 'Cancel'),
-                    child: const Text('Cancel'),
-                  ),
-                  TextButton(
-                    onPressed: () => Navigator.pop(context, 'OK'),
-                    child: const Text('OK'),
-                  ),
-                ],
-              ),
+            onPressed: () {
+              context.go('/book/0');
+            },
+            child: const Text('Go directly to /book/0 (GoRouter)'),
+          ),
+        ].map<Widget>(
+          (Widget w) => Padding(padding: const EdgeInsets.all(8), child: w),
+        ),
+        TextButton(
+          onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: const Text('Alert!'),
+              content: const Text('The alert description goes here.'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'Cancel'),
+                  child: const Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'OK'),
+                  child: const Text('OK'),
+                ),
+              ],
             ),
-            child: const Text('Show Dialog'),
-          )
-        ],
-      );
+          ),
+          child: const Text('Show Dialog'),
+        )
+      ],
+    );
+  }
 }

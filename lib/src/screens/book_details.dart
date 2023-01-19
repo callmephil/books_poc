@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_books/src/data.dart';
+import 'package:go_router_books/src/data/data.dart';
 import 'package:go_router_books/src/screens/author_details.dart';
 import 'package:url_launcher/link.dart';
 
@@ -47,8 +47,9 @@ class BookDetailsScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push<void>(
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) =>
-                        AuthorDetailsScreen(author: book!.author),
+                    builder: (BuildContext context) {
+                      return AuthorDetailsScreen(author: book!.author);
+                    },
                   ),
                 );
               },
@@ -56,11 +57,12 @@ class BookDetailsScreen extends StatelessWidget {
             ),
             Link(
               uri: Uri.parse('/author/${book!.author.id}'),
-              builder: (BuildContext context, FollowLink? followLink) =>
-                  TextButton(
-                onPressed: followLink,
-                child: const Text('View author (Link)'),
-              ),
+              builder: (BuildContext context, FollowLink? followLink) {
+                return TextButton(
+                  onPressed: followLink,
+                  child: const Text('View author (Link)'),
+                );
+              },
             ),
             TextButton(
               onPressed: () {

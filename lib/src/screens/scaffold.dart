@@ -35,37 +35,39 @@ class BookstoreScaffold extends StatelessWidget {
   final Widget child;
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: AdaptiveNavigationScaffold(
-          selectedIndex: selectedTab.index,
-          body: child,
-          onDestinationSelected: (int idx) {
-            switch (ScaffoldTab.values[idx]) {
-              case ScaffoldTab.books:
-                context.go('/books');
-                break;
-              case ScaffoldTab.authors:
-                context.go('/authors');
-                break;
-              case ScaffoldTab.settings:
-                context.go('/settings');
-                break;
-            }
-          },
-          destinations: const <AdaptiveScaffoldDestination>[
-            AdaptiveScaffoldDestination(
-              title: 'Books',
-              icon: Icons.book,
-            ),
-            AdaptiveScaffoldDestination(
-              title: 'Authors',
-              icon: Icons.person,
-            ),
-            AdaptiveScaffoldDestination(
-              title: 'Settings',
-              icon: Icons.settings,
-            ),
-          ],
-        ),
-      );
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: AdaptiveNavigationScaffold(
+        selectedIndex: selectedTab.index,
+        body: child,
+        onDestinationSelected: (int idx) {
+          switch (ScaffoldTab.values[idx]) {
+            case ScaffoldTab.books:
+              context.go('/books');
+              break;
+            case ScaffoldTab.authors:
+              context.go('/authors');
+              break;
+            case ScaffoldTab.settings:
+              context.go('/settings');
+              break;
+          }
+        },
+        destinations: const <AdaptiveScaffoldDestination>[
+          AdaptiveScaffoldDestination(
+            title: 'Books',
+            icon: Icons.book,
+          ),
+          AdaptiveScaffoldDestination(
+            title: 'Authors',
+            icon: Icons.person,
+          ),
+          AdaptiveScaffoldDestination(
+            title: 'Settings',
+            icon: Icons.settings,
+          ),
+        ],
+      ),
+    );
+  }
 }

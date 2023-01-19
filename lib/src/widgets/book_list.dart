@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:go_router_books/src/data.dart';
+import 'package:go_router_books/src/data/data.dart';
 
 /// The book list view.
 class BookList extends StatelessWidget {
@@ -22,16 +22,22 @@ class BookList extends StatelessWidget {
   final ValueChanged<Book>? onTap;
 
   @override
-  Widget build(BuildContext context) => ListView.builder(
-        itemCount: books.length,
-        itemBuilder: (BuildContext context, int index) => ListTile(
-          title: Text(
-            books[index].title,
-          ),
-          subtitle: Text(
-            books[index].author.name,
-          ),
-          onTap: onTap != null ? () => onTap!(books[index]) : null,
-        ),
-      );
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: books.length,
+      itemBuilder: _itemBuilder,
+    );
+  }
+
+  Widget _itemBuilder(BuildContext context, int index) {
+    return ListTile(
+      title: Text(
+        books[index].title,
+      ),
+      subtitle: Text(
+        books[index].author.name,
+      ),
+      onTap: onTap != null ? () => onTap!(books[index]) : null,
+    );
+  }
 }

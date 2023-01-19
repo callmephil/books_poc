@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:go_router_books/src/data.dart';
+import 'package:go_router_books/src/data/data.dart';
 
 /// The author list view.
 class AuthorList extends StatelessWidget {
@@ -22,16 +22,22 @@ class AuthorList extends StatelessWidget {
   final ValueChanged<Author>? onTap;
 
   @override
-  Widget build(BuildContext context) => ListView.builder(
-        itemCount: authors.length,
-        itemBuilder: (BuildContext context, int index) => ListTile(
-          title: Text(
-            authors[index].name,
-          ),
-          subtitle: Text(
-            '${authors[index].books.length} books',
-          ),
-          onTap: onTap != null ? () => onTap!(authors[index]) : null,
-        ),
-      );
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: authors.length,
+      itemBuilder: _itemBuilder,
+    );
+  }
+
+  Widget _itemBuilder(BuildContext context, int index) {
+    return ListTile(
+      title: Text(
+        authors[index].name,
+      ),
+      subtitle: Text(
+        '${authors[index].books.length} books',
+      ),
+      onTap: onTap != null ? () => onTap!(authors[index]) : null,
+    );
+  }
 }
