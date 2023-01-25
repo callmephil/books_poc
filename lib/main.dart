@@ -19,7 +19,6 @@ class Bookstore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint('main: rebuilt');
     return BookstoreAuthScope(
       notifier: Routes.authListenable,
       child: MaterialApp.router(

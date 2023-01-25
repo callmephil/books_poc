@@ -26,6 +26,7 @@ class BookstoreAuth extends ChangeNotifier {
     // Sign in. Allow any password.
     _signedIn = true;
     notifyListeners();
+
     return _signedIn;
   }
 }

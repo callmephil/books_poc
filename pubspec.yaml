@@ -32,8 +32,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  adaptive_navigation:
   adaptive_dialog:
+  adaptive_navigation:
   collection:
   go_router:
   logging:
@@ -41,7 +41,6 @@ dependencies:
   provider:
   shared_preferences:
   url_launcher:
-  very_good_analysis:
   url_strategy:
 
   # The following adds the Cupertino Icons font to your application.
@@ -58,6 +57,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  dart_code_metrics: ^5.5.0
+  very_good_analysis:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

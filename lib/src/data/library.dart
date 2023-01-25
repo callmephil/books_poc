@@ -52,6 +52,7 @@ class Library {
       orElse: () {
         final value = Author(id: allAuthors.length, name: authorName);
         allAuthors.add(value);
+
         return value;
       },
     );
